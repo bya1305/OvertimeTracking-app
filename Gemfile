@@ -29,6 +29,8 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails'
 gem 'gritter', '~> 1.2'
+gem 'administrate', '~> 0.8.1'
+gem 'bourbon'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
