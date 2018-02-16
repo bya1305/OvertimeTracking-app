@@ -10,4 +10,10 @@ FactoryBot.define do
     rationale "This is a second factory rationale"
     user
   end
+
+  factory :post_from_other_user, class: "Post" do
+    date Date.yesterday
+    rationale "Unable to access this"
+    non_authorized_user
+  end
 end
