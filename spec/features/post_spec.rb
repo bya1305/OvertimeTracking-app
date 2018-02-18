@@ -4,7 +4,7 @@ describe 'navigate' do
   let(:user) { FactoryBot.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "New Crazy rationale", user_id: user.id)
+    Post.create(date: Date.today, rationale: "New Crazy rationale", user_id: user.id, overtime_request: 3.5)
   end
   before do
     login_as(user, :scope => :user)
@@ -30,7 +30,7 @@ describe 'navigate' do
 
     it 'it has a scope so that only post creators can view posts' do
       other_user = User.create(first_name: "Nono", last_name: "User", email: "non@user.com", password: "asdfasdf", password_confirmation: "asdfasdf")
-      post_from_other_user = Post.create(date: Date.today, rationale: "asdfjklm not seen", user_id: other_user.id)
+      post_from_other_user = Post.create(date: Date.today, rationale: "asdfjklm not seen", user_id: other_user.id, overtime_request: 3.5)
 
       visit posts_path
       expect(page).to_not have_content(/asdfjklm not seen/)
@@ -57,14 +57,15 @@ describe 'navigate' do
 
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      click_on "Save"
+      fill_in 'post[overtime_request]', with: 4.5
 
-      expect(page).to have_content("Some rationale")
+      expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it "will have a user associated with it" do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "User Association"
+      fill_in 'post[overtime_request]', with: 4.5
       click_on "Save"
 
       expect(User.last.posts.last.rationale).to eq("User Association")
@@ -97,7 +98,7 @@ describe 'navigate' do
       logout(:user)
       delete_user = FactoryBot.create(:user)
       login_as(delete_user, :scope => :user)
-      post_to_delete = Post.create(date: Date.today, rationale: "Whatever", user_id: delete_user.id)
+      post_to_delete = Post.create(date: Date.today, rationale: "Whatever", user_id: delete_user.id, overtime_request: 3.5)
       visit posts_path
 
       click_link("delete_post_#{post_to_delete.id}_from_index")
