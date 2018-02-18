@@ -32,6 +32,7 @@ gem 'gritter', '~> 1.2'
 gem 'administrate', '~> 0.8.1'
 gem 'bourbon'
 gem 'pundit', '~> 1.1'
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
