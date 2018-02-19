@@ -13,6 +13,15 @@ end
 25.times do |post|
   Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser3.id, overtime_request: 2.5)
 end
+25.times do
+  AuditLog.create!(user_id: @seeduser.id, status: 0, start_date: (Date.today - 6.days))
+end
+25.times do
+  AuditLog.create!(user_id: @seeduser2.id, status: 0, start_date: (Date.today - 6.days))
+end
+25.times do
+  AuditLog.create!(user_id: @seeduser3.id, status: 0, start_date: (Date.today - 6.days))
+end
 
 puts "3 Users have been created"
 puts "1 Admin user has been created"
