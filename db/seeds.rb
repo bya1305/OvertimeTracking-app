@@ -8,18 +8,6 @@ AdminUser.create(email: "admin@admin.com", password: "asdfasdf", password_confir
 
 puts "1 Admin user has been created"
 
-25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser.id, overtime_request: 2.5)
-end
-25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser2.id, overtime_request: 2.5)
-end
-25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser3.id, overtime_request: 2.5)
-end
-
-puts "75 Posts have been created"
-
 AuditLog.create!(user_id: @seeduser.id, status: 0, start_date: (Date.today - 6.days))
 AuditLog.create!(user_id: @seeduser.id, status: 0, start_date: (Date.today - 13.days))
 AuditLog.create!(user_id: @seeduser.id, status: 0, start_date: (Date.today - 20.days))
@@ -33,3 +21,15 @@ AuditLog.create!(user_id: @seeduser3.id, status: 0, start_date: (Date.today - 13
 AuditLog.create!(user_id: @seeduser3.id, status: 0, start_date: (Date.today - 20.days))
 
 puts "3 Audit Logs have been created for each user"
+
+25.times do |post|
+  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser.id, overtime_request: 2.5)
+end
+25.times do |post|
+  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser2.id, overtime_request: 2.5)
+end
+25.times do |post|
+  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser3.id, overtime_request: 2.5)
+end
+
+puts "75 Posts have been created"
