@@ -9,15 +9,6 @@ namespace :notification do
         SmsTool.send_sms(number: e.phone, message: message)
       end
     end
-    #Schedule to run on Sunday at 5pm
-    #Iterate over all employees
-    #Skip admin users
-    #Send a message that has instructions and a link to log time
-
-    # User.all.each do |user|
-    #   SmsTool.send_sms()
-    # end
-
   end
 
   desc "Sends mail notification to AdminUsers each day to inform of pending overtime requests"
