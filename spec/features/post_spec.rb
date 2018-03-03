@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'navigate' do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:employee) }
 
   let(:post) do
     Post.create(date: Date.today, rationale: "New Crazy rationale", user_id: user.id, overtime_request: 3.5)

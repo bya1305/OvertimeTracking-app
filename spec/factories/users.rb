@@ -12,6 +12,15 @@ FactoryBot.define do
     phone "5555555555"
   end
 
+  factory :employee, class: "Employee" do
+    first_name "Employee"
+    last_name "Test"
+    email {generate :email}
+    password "asdfasdf"
+    password_confirmation "asdfasdf"
+    phone "5555555555"
+  end
+
   factory :admin_user, class: "AdminUser" do
     first_name "Admin"
     last_name "User"
