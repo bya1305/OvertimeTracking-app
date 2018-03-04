@@ -2,7 +2,7 @@
   <div class="homepage-block col-md-3">
     <h4><%= p.user.full_name %></h4>
     <p><span class="pending-details">Date Submitted:</span> <%= p.date %></p>
-    <p><span class="pending-details">Rationale:</span> <%= truncate p.rationale, length: 45 %></p>
+    <p><span class="pending-details">work_performed:</span> <%= truncate p.work_performed, length: 45 %></p>
     <div class="row">
       <div class="col-md-6 column">
         <%= link_to 'Approve', approve_post_path(p), class: 'btn btn-success btn-block', id: "approve_#{p.id}" %>

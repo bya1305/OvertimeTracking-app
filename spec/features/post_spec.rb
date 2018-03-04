@@ -4,7 +4,7 @@ describe 'navigate' do
   let(:user) { FactoryBot.create(:employee) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "New Crazy rationale", user_id: user.id, daily_hours: 3.5)
+    Post.create(date: Date.today, work_performed: "New Crazy work_performed", user_id: user.id, daily_hours: 3.5)
   end
   before do
     login_as(user, :scope => :user)
@@ -22,15 +22,18 @@ describe 'navigate' do
     end
 
     it "has a list of posts" do
-      post1 = FactoryBot.build_stubbed(:post)
-      post2 = FactoryBot.build_stubbed(:second_post)
+      post
+      second_post = FactoryBot.create(:second_post)
+      second_post.update!(user_id: user.id)
+
       visit posts_path
-      expect(page).to have_content(/Rationale|second/)
+      expect(page).to have_text(post.work_performed)
+      expect(page).to have_text(second_post.work_performed)
     end
 
     it 'it has a scope so that only post creators can view posts' do
       other_user = User.create(first_name: "Nono", last_name: "User", email: "non@user.com", password: "asdfasdf", password_confirmation: "asdfasdf", phone: "5555555555")
-      post_from_other_user = Post.create(date: Date.today, rationale: "asdfjklm not seen", user_id: other_user.id, daily_hours: 3.5)
+      post_from_other_user = Post.create(date: Date.today, work_performed: "asdfjklm not seen", user_id: other_user.id, daily_hours: 3.5)
 
       visit posts_path
       expect(page).to_not have_content(/asdfjklm not seen/)
@@ -56,7 +59,7 @@ describe 'navigate' do
     it "can be created from new form page" do
 
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Some rationale"
+      fill_in 'post[work_performed]', with: "Some work_performed"
       fill_in 'post[daily_hours]', with: 12.5
 
       expect { click_on "Save" }.to change(Post, :count).by(1)
@@ -64,11 +67,11 @@ describe 'navigate' do
 
     it "will have a user associated with it" do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "User Association"
+      fill_in 'post[work_performed]', with: "User Association"
       fill_in 'post[daily_hours]', with: 7.5
       click_on "Save"
 
-      expect(User.last.posts.last.rationale).to eq("User Association")
+      expect(User.last.posts.last.work_performed).to eq("User Association")
     end
   end
 
@@ -78,10 +81,10 @@ describe 'navigate' do
       visit edit_post_path(post)
 
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Edited rationale"
+      fill_in 'post[work_performed]', with: "Edited work_performed"
       click_on "Save"
 
-      expect(page).to have_content("Edited rationale")
+      expect(page).to have_content("Edited work_performed")
     end
 
     it 'cannot be edited by a non authorized user' do
@@ -98,7 +101,7 @@ describe 'navigate' do
       logout(:user)
       delete_user = FactoryBot.create(:user)
       login_as(delete_user, :scope => :user)
-      post_to_delete = Post.create(date: Date.today, rationale: "Whatever", user_id: delete_user.id, daily_hours: 3.5)
+      post_to_delete = Post.create(date: Date.today, work_performed: "Whatever", user_id: delete_user.id, daily_hours: 3.5)
       visit posts_path
 
       click_link("delete_post_#{post_to_delete.id}_from_index")

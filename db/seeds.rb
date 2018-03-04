@@ -23,13 +23,13 @@ AuditLog.create!(user_id: @seeduser3.id, status: 0, start_date: (Date.today - 20
 puts "3 Audit Logs have been created for each user"
 
 25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser.id, daily_hours: 2.5)
+  Post.create!(date: Date.today, work_performed: "#{post} work_performed content", user_id: @seeduser.id, daily_hours: 2.5)
 end
 25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser2.id, daily_hours: 2.5)
+  Post.create!(date: Date.today, work_performed: "#{post} work_performed content", user_id: @seeduser2.id, daily_hours: 2.5)
 end
 25.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @seeduser3.id, daily_hours: 2.5)
+  Post.create!(date: Date.today, work_performed: "#{post} work_performed content", user_id: @seeduser3.id, daily_hours: 2.5)
 end
 
 puts "75 Posts have been created"
