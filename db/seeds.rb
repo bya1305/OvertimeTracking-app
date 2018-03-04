@@ -1,10 +1,10 @@
-@seeduser = Employee.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow",phone: "5597798230")
-@seeduser2 = Employee.create(email: "test2@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Tyrion", last_name: "Lannister",phone: "5597798230")
-@seeduser3 = Employee.create(email: "test3@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Daenarys", last_name: "Targaryen",phone: "5597798230")
+@seeduser = Employee.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow",phone: "5597798230", ssn: 1234, company: "Stark Industries")
+@seeduser2 = Employee.create(email: "test2@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Tyrion", last_name: "Lannister",phone: "5597798230", ssn: 1234, company: "Stark Industries")
+@seeduser3 = Employee.create(email: "test3@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Daenarys", last_name: "Targaryen",phone: "5597798230", ssn: 1234, company: "Stark Industries")
 
 puts "3 Users have been created"
 
-AdminUser.create(email: "josh.avina78@gmail.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Will", last_name: "Turner", phone: "5597798230")
+AdminUser.create(email: "josh.avina78@gmail.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Will", last_name: "Turner", phone: "5597798230", ssn: 2468, company: "Overrule")
 
 puts "1 Admin user has been created"
 
