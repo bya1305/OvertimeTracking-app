@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Find this app [Here](https://project-overtime.herokuapp.com/)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Login as `test@test.com` with the password `asdfasdf` for the employee dashboard
+* Login as `admin@test.com` with the password `asdfasdf` for the manager dashboard
